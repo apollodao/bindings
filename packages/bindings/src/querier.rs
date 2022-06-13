@@ -6,7 +6,7 @@ use crate::query::{FullDenomResponse, OsmosisQuery, PoolStateResponse};
 
 /// This is a helper wrapper to easily use our custom queries
 pub struct OsmosisQuerier<'a> {
-    querier: &'a QuerierWrapper<'a, OsmosisQuery>,
+    pub querier: &'a QuerierWrapper<'a, OsmosisQuery>,
 }
 
 impl Querier for OsmosisQuerier<'_> {
