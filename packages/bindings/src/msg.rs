@@ -112,7 +112,7 @@ impl OsmosisMsg {
 }
 
 impl From<OsmosisMsg> for CosmosMsg<OsmosisMsg> {
-    fn from(msg: OsmosisMsg) -> CosmosMsg<OsmosisMsg> {
+    fn from(msg: OsmosisMsg) -> Self {
         CosmosMsg::Custom(msg)
     }
 }
