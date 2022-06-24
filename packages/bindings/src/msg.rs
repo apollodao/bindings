@@ -82,32 +82,39 @@ impl OsmosisMsg {
         denom_in: impl Into<String>,
         denom_out: impl Into<String>,
         amount: SwapAmountWithLimit,
-    ) -> Self {
+    ) -> CosmosMsg<OsmosisMsg> {
         OsmosisMsg::Swap {
             first: Swap::new(pool_id, denom_in, denom_out),
             amount,
             route: vec![],
         }
+        .into()
     }
 
-    pub fn mint_contract_tokens(denom: String, amount: Uint128, mint_to_address: String) -> Self {
+    pub fn mint_contract_tokens(
+        denom: String,
+        amount: Uint128,
+        mint_to_address: String,
+    ) -> CosmosMsg<OsmosisMsg> {
         OsmosisMsg::MintTokens {
             denom,
             amount,
             mint_to_address,
         }
+        .into()
     }
 
     pub fn burn_contract_tokens(
         denom: String,
         amount: Uint128,
         _burn_from_address: String,
-    ) -> Self {
+    ) -> CosmosMsg<OsmosisMsg> {
         OsmosisMsg::BurnTokens {
             denom,
             amount,
             burn_from_address: "".to_string(), // burn_from_address is currently disabled.
         }
+        .into()
     }
 }
 
