@@ -106,6 +106,14 @@ impl PoolStateResponse {
             })
             .collect()
     }
+
+    pub fn denom_pool_balance(&self, denom: &str) -> Uint128 {
+        self.assets
+            .iter()
+            .find(|c| c.denom == denom)
+            .unwrap()
+            .amount
+    }
 }
 
 #[derive(Serialize, Deserialize, Clone, PartialEq, JsonSchema, Debug)]
